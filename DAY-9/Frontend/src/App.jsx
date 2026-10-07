@@ -9,7 +9,7 @@ const App = () => {
 
   function fetchNotes() {
     axios
-      .get("http://localhost:3000/api/notes")
+      .get("https://day-9-vdu3.onrender.com/api/notes")
 
       .then((res) => {
         setnotes(res.data.notes);
@@ -28,7 +28,7 @@ const App = () => {
     console.log(title.value, desc.value);
     if (editId) {
       axios
-        .patch("http://localhost:3000/api/notes/" + editId, {
+        .patch("https://day-9-vdu3.onrender.com/api/notes/" + editId, {
           title: title.value,
           desc: desc.value,
         })
@@ -42,7 +42,7 @@ const App = () => {
     }
 
     axios
-      .post("http://localhost:3000/api/notes", {
+      .post("https://day-9-vdu3.onrender.com/api/notes", {
         title: title.value,
         desc: desc.value,
       })
@@ -66,7 +66,7 @@ const App = () => {
     console.log(noteId);
 
     axios
-      .delete("http://localhost:3000/api/notes/" + noteId)
+      .delete("https://day-9-vdu3.onrender.com/api/notes/" + noteId)
 
       .then((res) => {
         console.log(res.data);
