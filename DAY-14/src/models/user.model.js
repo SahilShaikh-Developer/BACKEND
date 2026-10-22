@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     profileImage:{
         type:String,
-        default:"https://ik.imagekit.io/pyuterrcl/360_F_1168505794_IBCEiafsIrHFJ09e65P2vh5115C1XI7e.webp"
+        default:"https://ik.imagekit.io/tecfk8rb7/360_F_1168505794_IBCEiafsIrHFJ09e65P2vh5115C1XI7e.webp"
     }
 })
 
