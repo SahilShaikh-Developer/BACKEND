@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const postController = require("../controllers/post.controller");
 const identifyUser = require("../middlewares/auth.middleware");
+const { sendFriendRequestController, getReceivedRequestsController, acceptFriendRequestController, rejectFriendRequestController, getFriendsController } = require("../controllers/friendRequest.controller");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -38,5 +39,35 @@ postRouter.get("/details/:postId",identifyUser, postController.getPostDetailsCon
  */
 
 postRouter.post("/like/:postId",identifyUser,postController.likePostController)
+
+/* 
+POST /api/posts/friends/request/:userId
+*/
+
+postRouter.post("/friends/request/:userId",identifyUser,sendFriendRequestController);
+
+/* 
+GET /api/posts/friends/requests
+ */
+
+postRouter.get("/friends/requests",identifyUser,getReceivedRequestsController);
+
+/* 
+PATCH /api/posts/friends/requests/:requestId/accept
+*/
+ 
+postRouter.patch("/friends/requests/:requestId/accept",identifyUser,acceptFriendRequestController
+);
+
+/* 
+PATCH /api/posts/friends/requests/:requestId/reject
+*/
+postRouter.patch("/friends/requests/:requestId/reject", identifyUser,rejectFriendRequestController);
+
+/* 
+GET /api/posts/friends
+*/
+
+postRouter.get( "/friends", identifyUser, getFriendsController);
 
 module.exports = postRouter;
